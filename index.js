@@ -9,7 +9,7 @@ function nSlice(array, n) {
     return new Array(length).fill().map((_, i) => array.slice(i * n, (i + 1) * n));
 }
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS ] });
+const client = new Client({ intents: [ Intents.FLAGS.GUILDS ] });
 
 client
     .on('ready', () => console.log(`Logged in as ${client.user.tag}`));
