@@ -1,0 +1,29 @@
+{
+    "name": "model-railroad-new-product-discord",
+    "version": "0.0.1",
+    "description": "model-railroad-new-product-discord",
+    "main": "index.js",
+    "scripts": {
+        "start": "node -r dotenv/config .",
+        "test": "mocha"
+    },
+    "keywords": [],
+    "author": "sharo-jef",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^18.0.5",
+        "eslint": "^8.20.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-unused-imports": "^2.0.0",
+        "mocha": "^10.0.0"
+    },
+    "type": "module",
+    "dependencies": {
+        "@discordjs/rest": "^0.5.0",
+        "discord-api-types": "^0.36.2",
+        "discord.js": "^13.8.1",
+        "dotenv": "^16.0.1",
+        "model-railroad-new-product": "github:sharo-jef/model-railroad-new-product#master",
+        "node-cron": "^3.0.1"
+    }
+}
