@@ -17,7 +17,7 @@ client
 
 client.login(process.env.TOKEN);
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 * * * *', async () => {
     console.log(`${new Date()} running scheduled task`);
     if (!existsSync(dbFileName)) {
         writeFileSync(dbFileName, '[]');
