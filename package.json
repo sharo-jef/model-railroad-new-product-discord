@@ -5,7 +5,11 @@
     "main": "index.js",
     "scripts": {
         "start": "node -r dotenv/config .",
-        "test": "mocha"
+        "test": "mocha",
+        "pm2": "pm2 start --name model-railroad-new-product-discord-main --node-args \"-r dotenv/config\" index.js",
+        "list": "pm2 list",
+        "stop": "pm2 stop model-railroad-new-product-discord-main",
+        "delete": "pm2 delete model-railroad-new-product-discord-main"
     },
     "keywords": [],
     "author": "sharo-jef",
@@ -15,7 +19,8 @@
         "eslint": "^8.20.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-unused-imports": "^2.0.0",
-        "mocha": "^10.0.0"
+        "mocha": "^10.0.0",
+        "pm2": "^5.2.0"
     },
     "type": "module",
     "dependencies": {
