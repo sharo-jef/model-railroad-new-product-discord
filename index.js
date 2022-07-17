@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 
 import { Client, Intents } from 'discord.js';
 import { NewProductRepository } from 'model-railroad-new-product';
@@ -9,6 +9,7 @@ function nSlice(array, n) {
     return new Array(length).fill().map((_, i) => array.slice(i * n, (i + 1) * n));
 }
 
+const dbFileName = 'db.json';
 const client = new Client({ intents: [ Intents.FLAGS.GUILDS ] });
 
 client
@@ -17,7 +18,11 @@ client
 client.login(process.env.TOKEN);
 
 cron.schedule('* * * * *', async () => {
-    const data = JSON.parse(readFileSync('db.json', 'utf-8')) || [];
+    console.log('running scheduled task');
+    if (!existsSync(dbFileName)) {
+        writeFileSync(dbFileName, '[]');
+    }
+    const data = JSON.parse(readFileSync(dbFileName, 'utf-8')) || [];
     const notif = [];
     const repo = new NewProductRepository();
     const schedule = await repo.get();
@@ -27,7 +32,8 @@ cron.schedule('* * * * *', async () => {
             data.push(s);
         }
     }
-    writeFileSync('db.json', JSON.stringify(data));
+
+    writeFileSync(dbFileName, JSON.stringify(data));
     if (notif.length === 0) {
         return;
     }

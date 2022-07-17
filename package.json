@@ -9,7 +9,8 @@
         "pm2": "pm2 start --name model-railroad-new-product-discord-main --node-args \"-r dotenv/config\" index.js",
         "list": "pm2 list",
         "stop": "pm2 stop model-railroad-new-product-discord-main",
-        "delete": "pm2 delete model-railroad-new-product-discord-main"
+        "delete": "pm2 delete model-railroad-new-product-discord-main",
+        "logs": "pm2 logs model-railroad-new-product-discord-main"
     },
     "keywords": [],
     "author": "sharo-jef",
